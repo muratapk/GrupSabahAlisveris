@@ -56,7 +56,7 @@ namespace GrupSabahAlisveris.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Category_Id,Cateogory_Name")] Category category)
+        public async Task<IActionResult> Create([Bind("Category_Id,Category_Name")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace GrupSabahAlisveris.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Category_Id,Cateogory_Name")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("Category_Id,Category_Name")] Category category)
         {
             if (id != category.Category_Id)
             {

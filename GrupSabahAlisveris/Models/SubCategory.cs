@@ -11,5 +11,7 @@ namespace GrupSabahAlisveris.Models
         [ForeignKey("Category")]
         public int Category_Id { get; set; }
         public virtual Category? Category { get; set; }
+
+        public virtual ICollection<Product>? Products { get; set; }
     }
 }

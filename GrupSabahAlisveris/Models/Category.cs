@@ -6,7 +6,13 @@ namespace GrupSabahAlisveris.Models
     {
         [Key]
         public int Category_Id { get; set; }
-        public string Cateogory_Name { get; set; } = string.Empty;
+
+        [Display(Name ="Kategori Adı")]
+        [MaxLength(50), MinLength(2)]
+        [Required(ErrorMessage ="Kategori Boş Geçemezsiniz")]
+        public string Category_Name { get; set; } = string.Empty;
         public virtual ICollection<SubCategory>? SubCategories { get; set; }
+
+        public virtual ICollection<Product>? Products { get; set; }
     }
 }
