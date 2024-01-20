@@ -1,0 +1,52 @@
+﻿@model List<GrupSabahAlisveris.Models.Admin>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+       <a asp-action="Create" asp-controller="Admins" class="btn btn-primary">Ekle</a>
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Admin Adı</th>
+                    <th>Admin Şifresi</th>
+                    <th>Admin Email</th>
+                    <th>Düzelt</th>
+                    <th>Sil</th>
+                   
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Admin Adı</th>
+                    <th>Admin Şifresi</th>
+                    <th>Admin Email</th>
+                    <th>Düzelt</th>
+                    <th>Sil</th>
+                   
+                </tr>
+            </tfoot>
+            <tbody>
+        @foreach( var  item in Model)
+                {
+                    <tr>
+                        <td>@item.AdminName</td>
+                        <td>@item.AdminPassword</td>
+                        <td>@item.AdminEmail</td>
+                        <td><a>Düzelt</a></td>
+                        <td><a>Sil</a></td>
+                       
+                    </tr>
+                }
+               
+               
+            </tbody>
+        </table>
+    </div>
+</div>
