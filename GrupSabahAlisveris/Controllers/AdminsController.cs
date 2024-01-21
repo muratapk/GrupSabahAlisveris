@@ -32,5 +32,13 @@ namespace GrupSabahAlisveris.Controllers
             TempData["Success"] = "İşlem Başarılı";
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            var sorgu = _context.Admins.Find(id);
+            return View(sorgu);
+        }
+        [HttpPost]
+
     }
 }

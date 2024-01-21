@@ -39,8 +39,8 @@
                         <td>@item.AdminName</td>
                         <td>@item.AdminPassword</td>
                         <td>@item.AdminEmail</td>
-                        <td><a>Düzelt</a></td>
-                        <td><a>Sil</a></td>
+                        <td><a href="/Admins/Edit/@item.AdminId">Düzelt</a></td>
+               <td><a asp-action="Edit" asp-controller="Admins" asp-route-id="@item.AdminId">Sil</a></td>
                        
                     </tr>
                 }
