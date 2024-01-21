@@ -1,0 +1,33 @@
+﻿@model GrupSabahAlisveris.Models.Admin
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+<form method="post" action="Edit">
+    <div class="form-group row">
+        <input type="hidden" asp-for="AdminId"/>
+        <label for="text" class="col-4 col-form-label">Admin Adı</label>
+        <div class="col-8">
+            <input id="text"  asp-for="AdminName" placeholder="Admin Adını Girin" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text1" class="col-4 col-form-label">Admin Şifresi</label>
+        <div class="col-8">
+            <input id="text1"  asp-for="AdminPassword" placeholder="Admin Şifresini Girin" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="text2" class="col-4 col-form-label">Admin Email</label>
+        <div class="col-8">
+            <input id="text2" asp-for="AdminEmail" placeholder="Admin Email Adresini Girin" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </div>
+</form>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GrupSabahAlisveris.Data;
 using GrupSabahAlisveris.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace GrupSabahAlisveris.Controllers
 {
@@ -63,8 +64,20 @@ namespace GrupSabahAlisveris.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Product_Id,Product_Name,Product_Description,Product_Image,Product_Price,Category_Id,SubCategory_Id,Product_Feature")] Product product)
+        public async Task<IActionResult> Create([Bind("Product_Id,Product_Name,Product_Description,Product_Image,Product_Price,Category_Id,SubCategory_Id,Product_Feature")] Product product,IFormFile ImagePicture)
         {
+
+            if(ImagePicture!=null)
+            {
+                var uzanti = Path.GetExtension(ImagePicture.FileName);
+                string yeniisim = Guid.NewGuid().ToString() + uzanti;
+                string yol = Path.Combine(Directory.GetCurrentDirectory() + "/wwwroot/Product_Images/" + yeniisim);
+                using(var stream=new FileStream(yol,FileMode.Create))
+                {
+                    ImagePicture.CopyToAsync(stream);
+                }
+                product.Product_Image = yeniisim;
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(product);

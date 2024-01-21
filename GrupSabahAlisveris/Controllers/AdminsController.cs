@@ -39,6 +39,27 @@ namespace GrupSabahAlisveris.Controllers
             return View(sorgu);
         }
         [HttpPost]
+        public IActionResult Edit(Admin gelen)
+        {
+            _context.Admins.Update(gelen);
+            _context.SaveChanges();
+            TempData["Success"] = "İşlem Başarılı";
+            return RedirectToAction("Index");
+        }
 
+        [HttpGet]
+        public IActionResult Delete(int? id)
+        {
+            var sorgu = _context.Admins.Find(id);
+            return View(sorgu);
+        }
+        [HttpPost]
+        public IActionResult Delete(Admin gelen)
+        {
+            _context.Admins.Remove(gelen);
+            _context.SaveChanges();
+            TempData["Success"] = "İşlem Başarılı";
+            return RedirectToAction("Index");
+        }
     }
 }

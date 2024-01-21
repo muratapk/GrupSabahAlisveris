@@ -5,10 +5,14 @@
 }
 
 <h1>Index</h1>
+
+<Partial name="_PoupMesaj"/>
+
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-       <a asp-action="Create" asp-controller="Admins" class="btn btn-primary">Ekle</a>
+        <a asp-action="Create" asp-controller="Admins" class="btn btn-primary">
+            <i class="fa-solid fa-address-book"></i></a>
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
@@ -39,8 +43,12 @@
                         <td>@item.AdminName</td>
                         <td>@item.AdminPassword</td>
                         <td>@item.AdminEmail</td>
-                        <td><a href="/Admins/Edit/@item.AdminId">Düzelt</a></td>
-               <td><a asp-action="Edit" asp-controller="Admins" asp-route-id="@item.AdminId">Sil</a></td>
+                        <td><a class="btn btn-success" href="/Admins/Edit/@item.AdminId">
+                                <i class="fa-solid fa-user-pen"></i>
+                        </a></td>
+               <td><a  class="btn btn-danger" asp-action="Delete" asp-controller="Admins" asp-route-id="@item.AdminId">
+                                <i class="fa-solid fa-trash"></i>
+               </a></td>
                        
                     </tr>
                 }

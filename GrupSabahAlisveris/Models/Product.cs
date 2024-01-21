@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GrupSabahAlisveris.Models
 {
@@ -16,5 +18,8 @@ namespace GrupSabahAlisveris.Models
         public int SubCategory_Id { get; set; }
         public virtual SubCategory? SubCategory { get; set; }
         public string Product_Feature { get; set; } = string.Empty;
+
+        [NotMapped]
+        public IFormFile? ImagePicture { get; set; }
     }
 }
