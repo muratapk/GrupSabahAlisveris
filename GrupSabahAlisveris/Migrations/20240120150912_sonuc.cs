@@ -4,22 +4,10 @@
 
 namespace GrupSabahAlisveris.Migrations
 {
-    public partial class admin : Migration
+    public partial class sonuc : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Cateogory_Name",
-                table: "Categories");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Category_Name",
-                table: "Categories",
-                type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: false,
-                defaultValue: "");
-
             migrationBuilder.CreateTable(
                 name: "Admins",
                 columns: table => new
@@ -33,6 +21,39 @@ namespace GrupSabahAlisveris.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admins", x => x.AdminId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Category_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Category_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Category_Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubCategories",
+                columns: table => new
+                {
+                    SubCategory_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SubCategory_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Category_Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubCategories", x => x.SubCategory_Id);
+                    table.ForeignKey(
+                        name: "FK_SubCategories_Categories_Category_Id",
+                        column: x => x.Category_Id,
+                        principalTable: "Categories",
+                        principalColumn: "Category_Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,6 +96,11 @@ namespace GrupSabahAlisveris.Migrations
                 name: "IX_Products_SubCategory_Id1",
                 table: "Products",
                 column: "SubCategory_Id1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubCategories_Category_Id",
+                table: "SubCategories",
+                column: "Category_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -85,16 +111,11 @@ namespace GrupSabahAlisveris.Migrations
             migrationBuilder.DropTable(
                 name: "Products");
 
-            migrationBuilder.DropColumn(
-                name: "Category_Name",
-                table: "Categories");
+            migrationBuilder.DropTable(
+                name: "SubCategories");
 
-            migrationBuilder.AddColumn<string>(
-                name: "Cateogory_Name",
-                table: "Categories",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

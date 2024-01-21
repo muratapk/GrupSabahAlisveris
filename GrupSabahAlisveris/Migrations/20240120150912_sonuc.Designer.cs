@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrupSabahAlisveris.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240120072937_admin")]
-    partial class admin
+    [Migration("20240120150912_sonuc")]
+    partial class sonuc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
