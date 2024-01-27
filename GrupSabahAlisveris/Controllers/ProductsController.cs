@@ -24,7 +24,7 @@ namespace GrupSabahAlisveris.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Products != null ? 
-                          View(await _context.Products.ToListAsync()) :
+                View(await _context.Products.Include(x=>x.Category).ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Products'  is null.");
         }
 
