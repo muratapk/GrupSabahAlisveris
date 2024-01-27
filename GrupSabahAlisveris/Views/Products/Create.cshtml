@@ -73,7 +73,10 @@
                 data: {id:deger},
                 dataType:'Json',
                 success: function (data) {
-                    $.each(data, function (i, row) { });
+                    $.each(data, function (i, row) { 
+                    $("#SubCategorySec").append('<option value='+row.value+'>'+row.text+'</option>')
+                    
+                    });
                 },
                error:function(data)
                {
