@@ -66,15 +66,17 @@
 <script>
     $(document).ready(function () {
         $("#Categorysec").change(function () {
-            var deger = $(this).val();
+
+            $("#SubCategorysec").empty();
+
             $.ajax({
                 type:'POST',
                 url: '/Products/SubCategoryList',
                 data: {id:deger},
                 dataType:'Json',
                 success: function (data) {
-                    $.each(data, function (i, row) { 
-                    $("#SubCategorySec").append('<option value='+row.value+'>'+row.text+'</option>')
+                    $.each(data, function (i, row) {
+                        $("#SubCategorysec").append('<option value=' + row.value + '>' + row.text + '</option>')
                     
                     });
                 },
