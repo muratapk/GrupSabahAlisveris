@@ -56,7 +56,7 @@ namespace GrupSabahAlisveris.Controllers
         public JsonResult SubCategoryList(int id)
         {
             var sonuc = _context.SubCategories.Where(x => x.Category_Id == id).ToList();
-            return Json(new SelectList(sonuc, "SubCategory_Id","SubCategoryName"));
+            return Json(new SelectList(sonuc, "SubCategory_Id","SubCategory_Name"));
         }
 
         // POST: Products/Create

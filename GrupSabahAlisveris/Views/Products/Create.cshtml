@@ -42,7 +42,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="SubCategory_Id" class="control-label"></label>
-                <input asp-for="SubCategory_Id" class="form-control" />
+                <select asp-for="SubCategory_Id" id="SubCategorysec"  class="form-control">
+                    <option value="">--Seçimini Yapın--</option>
+                </select>
                 <span asp-validation-for="SubCategory_Id" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -71,7 +73,7 @@
                 data: {id:deger},
                 dataType:'Json',
                 success: function (data) {
-                    alert(data);
+                    $.each(data, function (i, row) { });
                 },
                error:function(data)
                {

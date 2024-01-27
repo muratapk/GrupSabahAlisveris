@@ -4,7 +4,7 @@
 
 namespace GrupSabahAlisveris.Migrations
 {
-    public partial class sonuc : Migration
+    public partial class mig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
