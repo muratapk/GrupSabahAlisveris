@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GrupSabahAlisveris.Models
 {
@@ -6,7 +7,9 @@ namespace GrupSabahAlisveris.Models
     {
         [Key]
         public int GalleryId { get; set; }
+        [ForeignKey("Product")]
         public int? ProductId { get; set; }
+        public virtual Product? Product { get; set; }
         public string Image { get; set; } = string.Empty;
        
     }

@@ -30,6 +30,9 @@ namespace GrupSabahAlisveris.Models
         [Display(Name = "Ürün Özellikleri")]
         public string Product_Feature { get; set; } = string.Empty;
 
+        public virtual ICollection<ProductColor>? ProductColors { get; set; }
+        public virtual ICollection<ProductSize>? ProductSizes { get; set; }
+        public virtual ICollection<Gallery>? Galleries { get; set; }
         [NotMapped]
         public IFormFile? ImagePicture { get; set; }
     }
