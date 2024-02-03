@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GrupSabahAlisveris.Models.ProductColor>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-route-id="@ViewBag.ProductId" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stocks)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Product_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stocks)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductColorId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductColorId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductColorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
