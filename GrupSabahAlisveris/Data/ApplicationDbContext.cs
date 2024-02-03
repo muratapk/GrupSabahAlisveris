@@ -12,10 +12,13 @@ namespace GrupSabahAlisveris.Data
         public DbSet<SubCategory>? SubCategories { get; set; }
         public DbSet<Product>? Products { get; set; }
         public DbSet<Admin>? Admins { get; set; }
-        public DbSet<Colors>? Colors { get; set; }
-        public DbSet<Sizes>? Sizes { get; set; }
-        public DbSet<ProductColors>? ProductColors { get; set; }
-        public DbSet<ProductSizes>? ProductSizes { get; set; }
+        public DbSet<Color>? Colors { get; set; }
+        public DbSet<Size>? Sizes { get; set; }
+        public DbSet<ProductColor>? ProductColors { get; set; }
+        public DbSet<ProductSize>? ProductSizes { get; set; }
+        public DbSet<Comment>? Comments { get; set; }
+        
+        public DbSet<Gallery> Galleries { get; set; }
     }
    
 }
