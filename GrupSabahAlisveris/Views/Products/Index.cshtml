@@ -63,11 +63,12 @@
                 @Html.DisplayFor(modelItem => item.Product_Feature)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Product_Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Product_Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Product_Id">Delete</a>
-                    <a asp-controller="ProductColors" asp-action="Index" asp-route-id="@item.Product_Id">Renk</a> |
-                    <a asp-controller="ProductSizes" asp-action="Index" asp-route-id="@item.Product_Id">Beden</a>
+                    <a asp-action="Edit" title="Düzelt" asp-route-id="@item.Product_Id"><i class="fa-solid fa-pen-nib"></i></a> |
+                    <a asp-action="Details" title="Detay" asp-route-id="@item.Product_Id"><i class="fa-solid fa-file"></i></a> |
+                    <a asp-action="Delete" title="Silme" asp-route-id="@item.Product_Id"><i class="fa-solid fa-xmark"></i></a>
+                    <a asp-controller="ProductColors" title="Renkler" asp-action="Index" asp-route-id="@item.Product_Id"><i class="fa-brands fa-slack"></i></a> |
+                    <a asp-controller="ProductSizes" title="Beden" asp-action="Index" asp-route-id="@item.Product_Id"><i class="fa-solid fa-hippo"></i></a>
+                    <a asp-controller="ProductSizes" title="Resim" asp-action="Index" asp-route-id="@item.Product_Id"><i class="fa-brands fa-docker"></i></a>
             </td>
         </tr>
 }
