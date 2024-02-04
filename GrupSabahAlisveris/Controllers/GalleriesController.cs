@@ -79,7 +79,7 @@ namespace GrupSabahAlisveris.Controllers
                         {
                             item.CopyToAsync(stream);
                         }
-                        dosya += yeniisim+"-";
+                        dosya += yeniisim+"_";
                     }
                 }
                 
@@ -95,7 +95,7 @@ namespace GrupSabahAlisveris.Controllers
                 gallery.Image = dosya;
                 _context.Add(gallery);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),"Galleries",new {id=gallery.ProductId});
             }
             ViewData["ProductId"] = new SelectList(_context.Products, "Product_Id", "Product_Name", gallery.ProductId);
             return View(gallery);

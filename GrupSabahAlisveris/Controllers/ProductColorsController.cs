@@ -68,7 +68,7 @@ namespace GrupSabahAlisveris.Controllers
             {
                 _context.Add(productColor);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { id =productColor.ProductId });
             }
             ViewData["ColorId"] = new SelectList(_context.Colors, "ColorId", "ColorId", productColor.ColorId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Product_Id", "Product_Name", productColor.ProductId);

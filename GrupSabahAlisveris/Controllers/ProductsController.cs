@@ -166,9 +166,16 @@ namespace GrupSabahAlisveris.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
             }
             var product = await _context.Products.FindAsync(id);
+            var colors = await _context.Colors.FindAsync(id);
+            var sizes = await _context.Sizes.FindAsync(id);
+            var gallery = await _context.Galleries.FindAsync(id);
+
             if (product != null)
             {
                 _context.Products.Remove(product);
+                _context.Colors.Remove(colors);
+                _context.Sizes.Remove(sizes);
+                _context.Galleries.Remove(gallery);
             }
             
             await _context.SaveChangesAsync();

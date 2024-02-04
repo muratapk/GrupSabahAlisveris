@@ -29,7 +29,17 @@
                 @Html.DisplayFor(modelItem => item.Product.Product_Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                    @{
+                        string[] resim = item.Image.Split("_");
+                        foreach(var satir in resim)
+                        {
+                            if(satir!=null)
+                            {
+                                <img src="/Product_Images/@satir" height="100" widht="100" />
+                            }
+                           
+                        }
+                    }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.GalleryId">Edit</a> |

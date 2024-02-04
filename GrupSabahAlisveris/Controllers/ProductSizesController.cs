@@ -67,7 +67,7 @@ namespace GrupSabahAlisveris.Controllers
             {
                 _context.Add(productSize);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),new { id = productSize.ProductId });
             }
             ViewData["ProductId"] = new SelectList(_context.Products, "Product_Id", "Product_Name", productSize.ProductId);
             ViewData["SizeId"] = new SelectList(_context.Sizes, "SizeId", "SizeId", productSize.SizeId);
