@@ -64,6 +64,7 @@ namespace GrupSabahAlisveris.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GalleryId,ProductId,Image")] Gallery gallery,List<IFormFile> ProductImage)
         {
+            string dosya = "";
             try
             {
                 if(ProductImage.Count>0)
@@ -78,10 +79,10 @@ namespace GrupSabahAlisveris.Controllers
                         {
                             item.CopyToAsync(stream);
                         }
-
+                        dosya += yeniisim+"-";
                     }
                 }
-
+                
             }
             catch (Exception ex)
             {
@@ -91,6 +92,7 @@ namespace GrupSabahAlisveris.Controllers
 
             if (ModelState.IsValid)
             {
+                gallery.Image = dosya;
                 _context.Add(gallery);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
