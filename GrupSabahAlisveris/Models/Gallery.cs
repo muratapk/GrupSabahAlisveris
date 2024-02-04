@@ -11,6 +11,9 @@ namespace GrupSabahAlisveris.Models
         public int? ProductId { get; set; }
         public virtual Product? Product { get; set; }
         public string Image { get; set; } = string.Empty;
+        
+        [NotMapped]
+        public IFormFile? ProductImage { get; set; }
        
     }
 }
