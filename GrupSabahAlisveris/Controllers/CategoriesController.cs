@@ -22,6 +22,9 @@ namespace GrupSabahAlisveris.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
+            ViewBag.Oturum = HttpContext.Session.GetString("UserSession");
+            
+          
               return _context.Categories != null ? 
                           View(await _context.Categories.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
