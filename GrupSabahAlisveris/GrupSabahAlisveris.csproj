@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\ckeditor\.circleci\config.yml" />
+    <None Include="wwwroot\Admin\ckeditor\.circleci\config.yml" />
   </ItemGroup>
 
 </Project>
