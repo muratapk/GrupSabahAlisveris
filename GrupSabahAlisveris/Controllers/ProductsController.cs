@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GrupSabahAlisveris.Data;
 using GrupSabahAlisveris.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GrupSabahAlisveris.Controllers
 {
@@ -20,6 +21,7 @@ namespace GrupSabahAlisveris.Controllers
             _context = context;
         }
 
+       
         // GET: Products
         public async Task<IActionResult> Index()
         {

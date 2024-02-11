@@ -1,6 +1,9 @@
 ﻿using GrupSabahAlisveris.Data;
 using Microsoft.AspNetCore.Mvc;
 using GrupSabahAlisveris.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 namespace GrupSabahAlisveris.Controllers
 {
     public class LoginController : Controller
@@ -21,14 +24,23 @@ namespace GrupSabahAlisveris.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult EnterLogin(Admin gelen)
+        public async Task<IActionResult> EnterLogin(Admin gelen)
         { //Where 
             var sorgu = _context.Admins.Where(x => x.AdminName == gelen.AdminName && x.AdminPassword == gelen.AdminPassword).FirstOrDefault();
-            if(sorgu != null) {
+            if (sorgu != null) {
                 TempData["Success"] = "İşlem Başarılı";
                 HttpContext.Session.SetString("UserSession", gelen.AdminName);
+                var claims = new List<Claim> {
+                     new Claim(ClaimTypes.Name, gelen.AdminName),
+                     new Claim(ClaimTypes.SerialNumber, gelen.AdminPassword),
+                     new Claim(ClaimTypes.Role,"Admin")
+                    };
+                var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsPrincipal principal= new ClaimsPrincipal(claimIdentity);
+                var authProperties = new AuthenticationProperties();
+                await HttpContext.SignInAsync(principal);
 
-                return RedirectToAction("Index", "Categories");
+                return RedirectToAction("Index", "Products");
             }
             TempData["Error"] = "Kullanıcı ve Şifre Hatalı";
             return RedirectToAction("Index","Login");
