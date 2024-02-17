@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GrupSabahAlisveris.Data;
 using GrupSabahAlisveris.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GrupSabahAlisveris.Controllers
 {
+    
     public class ProductColorsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace GrupSabahAlisveris.Controllers
         }
 
         // GET: ProductColors
+        
         public async Task<IActionResult> Index(int? id)
         {
             var applicationDbContext = _context.ProductColors.Where(x=>x.ProductId==id).Include(p => p.Color).Include(p => p.Product);

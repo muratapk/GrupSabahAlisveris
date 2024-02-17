@@ -26,4 +26,8 @@
     <Folder Include="wwwroot\Product_Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Admin\ckeditor\.circleci\config.yml" />
+  </ItemGroup>
+
 </Project>
