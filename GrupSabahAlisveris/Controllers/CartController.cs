@@ -27,6 +27,11 @@ namespace GrupSabahAlisveris.Controllers
             return View(cartVm);
 
         }
+        public async Task<IActionResult>CartList()
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            return View(cart);
+        }
 
         public async Task<IActionResult>Add(int id)
         {
@@ -46,7 +51,7 @@ namespace GrupSabahAlisveris.Controllers
             }
             HttpContext.Session.SetJson("Cart", cart);
             TempData["Success"] = "Sepete Eklendi";
-            return RedirectToAction("Index");
+            return Redirect(Request.Headers["Referer"].ToString());
             
         }
         //Sepetten tek bir ürün azaltma

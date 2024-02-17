@@ -23,7 +23,7 @@ namespace GrupSabahAlisveris.Controllers
 
 
         // GET: Products
-        [Authorize]
+       
         public async Task<IActionResult> Index()
         {
               return _context.Products != null ? 

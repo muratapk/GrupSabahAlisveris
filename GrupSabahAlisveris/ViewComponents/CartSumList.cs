@@ -17,6 +17,7 @@ namespace GrupSabahAlisveris.ViewComponents
         public IViewComponentResult Invoke()
         {
             List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+            //session cart listesini al
             CartViewModel cartVm = new CartViewModel()
                  {
 
@@ -25,6 +26,9 @@ namespace GrupSabahAlisveris.ViewComponents
 
 
                   };
+
+            //oluşturduğum DTO DATA Transfer Object Nesnesi verilerimi ata kart bilgileri 
+            //toplam ürün fiyatını al
             return View(cartVm);
                 
         }
