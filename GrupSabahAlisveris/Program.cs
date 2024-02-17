@@ -17,25 +17,10 @@ builder.Services.AddSession(
 );
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddAuthorization(options =>
-{
-    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-});
 
-builder.Services.AddControllers(config =>
-{
-    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-    config.Filters.Add(new AuthorizeFilter(policy));
-}
-);
 
-//builder.Services.AddMvc(
-//    config =>
-//    {
-//        var policy=new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-//        config.Filters.Add(new AuthorizeFilter(policy));
-//    }
-//    );
+
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
