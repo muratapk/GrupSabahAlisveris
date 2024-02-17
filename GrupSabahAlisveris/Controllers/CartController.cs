@@ -42,10 +42,10 @@ namespace GrupSabahAlisveris.Controllers
                 cartItem.Quantity += 1;
 
             }
-            HttpContent.Session.SetJson("Cart", cart);
+            HttpContext.Session.SetJson("Cart", cart);
             TempData["Success"] = "Sepete Eklendi";
             return RedirectToAction(Request.Headers["Referer"].ToString());
-            return View();
+            
         }
     }
 }
