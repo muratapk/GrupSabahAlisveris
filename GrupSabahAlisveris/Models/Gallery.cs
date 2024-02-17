@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GrupSabahAlisveris.Models
@@ -13,7 +14,7 @@ namespace GrupSabahAlisveris.Models
         public string Image { get; set; } = string.Empty;
         
         [NotMapped]
-        public IFormFile? ProductImage { get; set; }
+        public IEnumerable <IFormFile>? ProductImage { get; set; }
        
     }
 }
