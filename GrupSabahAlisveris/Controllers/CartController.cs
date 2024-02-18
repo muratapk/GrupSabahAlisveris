@@ -16,9 +16,9 @@ namespace GrupSabahAlisveris.Controllers
         }
 
             public IActionResult Index()
-        {
+         {
             List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
-            CartViewModel cartVm = new CartViewModel() {
+            CartViewModel cartVm = new() {
                 CartItems = cart,
                 GrandTotal = cart.Sum(x => x.Quantity * x.Price),
             
