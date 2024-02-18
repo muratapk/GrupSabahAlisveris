@@ -85,8 +85,40 @@ namespace GrupSabahAlisveris.Controllers
             return RedirectToAction("Index");
         }
 
-    // Sepeti ürünü sepetten silme
-       public async Task<IActionResult> Remove(int id)
+        //Sepetteki Adedi Artırma 
+
+        public async Task<IActionResult> Increase(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+            //session içindeki listeyi al  bunu cart
+            CartItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+            //session listesi içinde veri varsa  cartItem ata
+            if (cartItem.Quantity > 0)
+            {
+                //cartItem içindeki ürün var ve sayısı bir den büyük ise bir azalt
+                cartItem.Quantity += 1;
+            }
+            else
+            {
+                //içinde bir ürün varsa sepetteki tüm özellikeri yok adı resmi ve adet bilgileri
+                //sil
+                cart.RemoveAll(c => c.ProductId == id);
+            }
+            if (cart.Count > 0)
+            {
+                HttpContext.Session.Remove("cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+            TempData["Success"] = "Sepetten Adet Artırıldı";
+
+            return RedirectToAction("Index");
+        }
+        // Sepeti ürünü sepetten silme
+        [HttpGet]
+        public async Task<IActionResult> Remove(int id)
         {
             List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
             //sepetteki ürünleri getir

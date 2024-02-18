@@ -38,25 +38,36 @@
                     @foreach(var item in Model.CartItems)
                     {
                     <tr>
-                        <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> @item.Product_Name</td>
-                        <td class="align-middle">@item.Product_Price</td>
+                                <td class="align-middle"><img src="/Product_Images/@item.Image" alt="" style="width: 50px;"> @item.ProductName</td>
+                        <td class="align-middle">@item.Price</td>
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-minus">
+              <button data-id="@item.ProductId" class="btn btn-sm btn-primary btn-minus azalt">
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
                                 <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-primary btn-plus">
+            <button data-id="@item.ProductId" class="btn btn-sm btn-primary btn-plus arttir">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                         </td>
-                        <td class="align-middle">$150</td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
+                                <td class="align-middle">
+                                      @{
+                                        decimal toplam;
+                                        toplam = item.Price * item.Quantity;
+
+                                      }
+                                      @toplam
+                                </td>
+                                <td class="align-middle">
+                                    <button data-id="@item.ProductId" class="btn btn-sm btn-primary silme">
+                            <i class="fa fa-times" ></i>
+                            
+                        </button></td>
                     </tr>
                     }
                 </tbody>
@@ -102,3 +113,25 @@ else
     <h2>Sepete Ürün Yok !!!</h2>
 }
 <!-- Cart End -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(document).ready(function () {
+        $(".silme").click(function () { 
+            let urunId = $(this).attr("data-id");
+
+            $.ajax({
+               type:'GET',
+               url:'/Cart/Remove',
+                data: {id:urunId},
+                success:function(data){
+                   
+                    alert("İşlem Başarılı");
+                    window.location.href = '/Cart/Index';
+                },
+            });
+        
+        });
+    
+    });
+</script>
