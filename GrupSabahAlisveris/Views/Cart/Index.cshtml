@@ -1,4 +1,8 @@
 ﻿@model GrupSabahAlisveris.Dto.CartViewModel
+@{
+    ViewData["Title"] = "Sepet";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
 <!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -12,6 +16,11 @@
 </div>
 <!-- Page Header End -->
 <!-- Cart Start -->
+@if(Model.CartItems.Count>0)
+{
+    
+
+
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
         <div class="col-lg-8 table-responsive mb-5">
@@ -85,4 +94,9 @@
         </div>
     </div>
 </div>
+}
+else
+{
+    <h2>Sepete Ürün Yok !!!</h2>
+}
 <!-- Cart End -->
